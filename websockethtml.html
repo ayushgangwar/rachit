@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+    <style>
+    table{
+        /* background: #000; */
+        color:white;
+        border:5px solid black;
+    }
+    th{
+        /* background: #000; */
+        color:black;
+        padding: 10px;
+        width: 400px;
+        border:1px solid black;
+        background-color: aquamarine
+    }
+    td{
+        /* background: #000; */
+        color:black;
+        border:1px solid black;
+        text-align: center;
+        background-color: cornsilk
+    }
+    tr{
+        background: white;   
+        color:black;
+        border:5px solid black;
+        font-display: block;
+        font-size: 20px;
+       
+    }
+    #headd{
+        color:blue;
+        border:5px solid black;
+    }
+    #myTr{
+            border:30px;
+            border:5px solid black;
+    }
+    </style>
+    </head>
+    <body>
+        <!-- <table id="myTable" style="border:2px solid pink">
+            <tr style="border:2px solid red">
+                <th id="head1" style="border:2px solid green">one</th>
+                <th  id="head2" style="border:2px solid rgb(24, 48, 24)">two</th>
+                <th  id="head3" style="border:2px solid rgb(32, 8, 8)">three</th>
+                <th  id="head4" style="border:2px solid rgb(255, 0, 234)">four</th>             
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table> -->
+        
+        <script>
+            var arrHead = new Array();
+            arrHead = ['Stock_name', '    Open     ', '     High     ', '     Low    ','     Close      ','ltp']; 
+            var ws = new WebSocket("ws://127.0.0.1:5675/")
+             x = document.createElement("TABLE");
+            x.setAttribute("id", "myTable");
+            document.body.appendChild(x);
+            // headd = document.createElement("THEAD");
+
+             var tr = x.insertRow(-1);
+
+            for (var h = 0; h < arrHead.length; h++) {
+                var th = document.createElement('th');          // TABLE HEADER.
+                th.innerHTML = arrHead[h];
+                tr.appendChild(th);
+            }
+
+            var t1=x.insertRow(1)
+            t1.setAttribute("id",  "myTr");
+
+           
+            // headd.setAttribute("id", "headd");
+            // yy = document.createTextNode("MY HEAD");
+            // y1 = document.createTextNode("MY HEAD");
+            // y2 = document.createTextNode("MY HEAD");
+            // y3 = document.createTextNode("MY HEAD");
+
+            // headd.appendChild(yy)
+            // headd.appendChild(y1)
+            // headd.appendChild(y2)
+            // headd.appendChild(y3)
+
+            // x.appendChild(headd);
+                // messages = document.createElement('table');
+            ws.onmessage = function (event) {
+              
+                stockdata=(event.data).split(" ")
+                stockdata[0]= 'icici';
+                console.log(stockdata,"stockdata")
+            // y = document.createElement("tr");
+            // y.setAttribute("id",  "myTr");
+            // setTimeout
+            document.getElementById("myTr").innerHTML=" "
+ 
+
+            for (var h =0; h < stockdata.length; h++) {
+            //    setTimeout(){
+            console.log("loop se andar")
+
+                var th = document.createElement('td'); 
+                th.setAttribute("id",h)         // TABLE HEADER.
+                th.innerHTML = stockdata[h];
+                t1.appendChild(th);
+            //    }
+               
+                // t.deleteRow(t1)
+            }
+            console.log("loop se baahaar")
+            // for (var h =0; h < stockdata.length; h++) {
+            // //    setTimeout(){
+            //     var th = document.createElement('td');          // TABLE HEADER.
+            //     th.innerHTML = " ";
+            //     t1.appendChild(th);
+            // //    }
+               
+            //     // t.deleteRow(t1)
+            // }
+            // document.getElementById("myTr").innerHTML=" "
+
+            // t1.appendChild(th)
+            // var z = document.createElement("TD");
+            //     var t = document.createTextNode("event");
+            //     z.appendChild(t);
+            //     y.appendChild(z);
+            // document.getElementById("myTr").appendChild(z);
+            // var t0 = document.createTextNode(event.data);
+            // var t1 = document.createTextNode(event.data);
+            // var t2 = document.createTextNode(event.data);
+            // var t3 = document.createTextNode(event.data);
+            // var rows=  document.getElementById("myTable").appendChild(y)
+
+            // var td1 = document.createElement('tr');          // TABLE HEADER.
+
+            // for (var h = 0; h < 4; h++) {
+            //     // var ca= c+h
+            //     ca=rows.insertCell(h)
+            //     console.log("c+h--------",ca)
+            //     // c2=rows.insertCell(1)
+            //     // c3=rows.insertCell(2)
+            //     // c4=rows.insertCell(3)
+            //     ca.innerHTML=event.data
+            //     // c2.innerHTML=event.data
+            //     // c3.innerHTML=event.data
+            //     // c4.innerHTML=event.data
+
+            //     // var th = document.createElement('tr');          // TABLE HEADER.
+            //     // th.innerHTML = t+h;
+            //     // rows.appendChild(th);
+            // }
+
+
+
+            // for (var h = 0; h < 4; h++) {
+                // c0=rows.insertCell(0)
+                // c1=rows.insertCell(1)
+                // c2=rows.insertCell(2)
+                // c3=rows.insertCell(3)
+                // c4=rows.insertCell(4)
+                // c1.innerHTML=event.data.slice(0,7)
+                // c2.innerHTML=event.data.slice(9,15)
+                // c3.innerHTML=event.data.slice(16,23)
+                // c4.innerHTML=event.data.slice(23,31)
+
+                // var th = document.createElement('tr');          // TABLE HEADER.
+                // th.innerHTML = t+h;
+                // rows.appendChild(th);
+            // }
+            //     y.appendChild(tr);'
+        
+                // y.appendChild(t0);
+                // y.appendChild(t1);
+                // y.appendChild(t2);
+                // y.appendChild(t3);
+
+            // document.getElementById("myTable").appendChild(y);
+
+
+
+
+            //     var z = document.createElement("TD");
+            //     var t = document.createTextNode("event");
+            //     z.appendChild(t);
+            // document.getElementById("myTr").appendChild(z);
+
+                // var messages = document.getElementsByTagName('table')[0]
+            
+                //     message = document.createElement('tr'),
+                    // message2 = document.createElement('tr')
+                    // content2 = document.createTextNode(event.data[1]);
+                    // message3 = document.createElement('tr')
+                    // content3 = document.createTextNode(event.data[2]);
+                    // message4 = document.createElement('tr')
+                    // content4 = document.createTextNode(event.data[3]);
+
+                //     content=   document.createTextNode(event.data[2]);
+                // message.appendChild(content);
+
+                // messages.appendChild(message);
+
+
+                // message.appendChild(content);
+                // messages.appendChild(message2);
+                // message.appendChild(content3);
+                // messages.appendChild(message3);
+                // message.appendChild(content4);
+                // messages.appendChild(message4);
+            };
+
+            // document.body.appendChild(messages);
+        </script>
+    </body>
+</html>
